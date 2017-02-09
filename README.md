@@ -1,4 +1,4 @@
-# Seek takehome test
+# Sample code
 
 ## Installation
 

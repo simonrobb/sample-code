@@ -37,9 +37,12 @@ export default class Checkout {
    */
 
   total() {
+    // Make a copy of the items
+    const items = JSON.parse(JSON.stringify(this.items));
+
     // Apply the pipe function of each special to the scanned items
     // We end up with a transformed list of scanned items
-    const itemsWithSpecials = this.pricingRules.specials.reduce((prev, current) => current.pipe(prev), this.items);
+    const itemsWithSpecials = this.pricingRules.specials.reduce((prev, current) => current.pipe(prev), items);
 
     // Sum and return the prices of the remaining items
     return itemsWithSpecials.reduce((prev, current) => prev + current.price, 0);
